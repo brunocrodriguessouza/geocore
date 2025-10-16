@@ -70,7 +70,7 @@ public class AgeService {
      */
     private void validateBirthDateIsNotInFuture(LocalDate birthDate) {
         if (birthDate.isAfter(LocalDate.now(clock))) {
-            throw new IllegalArgumentException("Birth date cannot be in the future");
+            throw new IllegalArgumentException("Data de nascimento não pode ser no futuro");
         }
     }
 
@@ -82,7 +82,7 @@ public class AgeService {
      */
     private void validateAdmissionDateIsNotInFuture(LocalDate admissionDate) {
         if (admissionDate.isAfter(LocalDate.now(clock))) {
-            throw new IllegalArgumentException("Admission date cannot be in the future");
+            throw new IllegalArgumentException("Data de admissão não pode ser no futuro");
         }
     }
 }

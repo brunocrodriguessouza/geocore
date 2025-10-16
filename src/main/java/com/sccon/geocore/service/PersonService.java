@@ -64,6 +64,7 @@ public class PersonService {
      * @return pessoa criada
      */
     public Person create(String name, LocalDate birthDate, LocalDate admissionDate) {
+        validateBirthDateIsNotInFuture(birthDate);
         Long nextId = repo.getNextId();
         var person = new Person(nextId, name, birthDate, admissionDate);
         return repo.save(person);
@@ -81,6 +82,7 @@ public class PersonService {
      */
     public Person createWithId(Long id, String name, LocalDate birthDate, LocalDate admissionDate) {
         validatePersonDoesNotExist(id);
+        validateBirthDateIsNotInFuture(birthDate);
         Person newPerson = new Person(id, name, birthDate, admissionDate);
         return repo.save(newPerson);
     }
@@ -96,6 +98,7 @@ public class PersonService {
      * @throws NoSuchElementException se a pessoa não for encontrada
      */
     public Person update(Long id, String name, LocalDate birthDate, LocalDate admissionDate) {
+        validateBirthDateIsNotInFuture(birthDate);
         return repo.update(id, current -> new Person(id, name, birthDate, admissionDate));
     }
 
@@ -237,6 +240,18 @@ public class PersonService {
     private void validateAdmissionDateIsNotNull(LocalDate admissionDate) {
         if (admissionDate == null) {
             throw new IllegalArgumentException("Data de admissão não pode ser nula");
+        }
+    }
+
+    /**
+     * Valida se a data de nascimento não está no futuro.
+     * 
+     * @param birthDate data de nascimento a ser validada
+     * @throws IllegalArgumentException se a data for no futuro
+     */
+    private void validateBirthDateIsNotInFuture(LocalDate birthDate) {
+        if (birthDate.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Data de nascimento não pode ser no futuro");
         }
     }
 }

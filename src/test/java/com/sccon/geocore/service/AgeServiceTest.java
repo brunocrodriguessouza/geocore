@@ -74,7 +74,7 @@ class AgeServiceTest {
             () -> ageService.diff(futureDate)
         );
         
-        assertTrue(exception.getMessage().contains("Birth date cannot be in the future"));
+        assertTrue(exception.getMessage().contains("Data de nascimento não pode ser no futuro"));
     }
 
     @Test
@@ -112,6 +112,6 @@ class AgeServiceTest {
             () -> ageService.yearsOfService(futureDate)
         );
         
-        assertTrue(exception.getMessage().contains("Admission date cannot be in the future"));
+        assertTrue(exception.getMessage().contains("Data de admissão não pode ser no futuro"));
     }
 }
