@@ -11,9 +11,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+/**
+ * Handler global para tratamento de exceções na aplicação.
+ * Centraliza o tratamento de erros e retorna respostas padronizadas.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     
+    /**
+     * Trata exceções de pessoa não encontrada.
+     * 
+     * @param ex exceção de elemento não encontrado
+     * @return detalhes do problema com status 404
+     */
     @ExceptionHandler(NoSuchElementException.class)
     public ProblemDetail handlePersonNotFound(NoSuchElementException ex){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
@@ -23,6 +33,12 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Trata exceções de parâmetros inválidos.
+     * 
+     * @param ex exceção de argumento ilegal
+     * @return detalhes do problema com status 400
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ProblemDetail handleInvalidParameter(IllegalArgumentException ex){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -32,6 +48,12 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Trata exceções de validação de argumentos de método.
+     * 
+     * @param ex exceção de validação
+     * @return detalhes do problema com status 400 e erros de campo
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleValidationError(MethodArgumentNotValidException ex){
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
@@ -48,6 +70,12 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Trata exceções de violação de restrições.
+     * 
+     * @param ex exceção de violação de restrição
+     * @return detalhes do problema com status 400
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ProblemDetail handleConstraintViolation(ConstraintViolationException ex){
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
@@ -58,6 +86,12 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Trata exceções não esperadas.
+     * 
+     * @param ex exceção genérica
+     * @return detalhes do problema com status 500
+     */
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleUnexpectedError(Exception ex){
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);

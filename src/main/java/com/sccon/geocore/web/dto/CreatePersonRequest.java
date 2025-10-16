@@ -4,6 +4,14 @@ import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
+/**
+ * DTO para criação de uma nova pessoa.
+ * Contém os dados necessários para criar uma pessoa no sistema.
+ * 
+ * @param name nome da pessoa (obrigatório)
+ * @param birthDate data de nascimento (obrigatória, deve ser no passado)
+ * @param admissionDate data de admissão (obrigatória, deve ser no passado ou presente)
+ */
 public record CreatePersonRequest(
         @NotBlank(message = "Nome é obrigatório") String name,
         @NotNull(message = "Data de nascimento é obrigatória") @Past(message = "Data de nascimento deve ser no passado") LocalDate birthDate,
