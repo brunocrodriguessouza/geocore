@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "geocore-api-collection",
+		"name": "Geocore API - People Management",
+		"description": "Collection completa para testar todos os endpoints da API Geocore para gerenciamento de pessoas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "People Management",
+			"item": [
+				{
+					"name": "Get All People",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						},
+						"description": "Retorna uma lista com todas as pessoas cadastradas"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						},
+						"description": "Retorna os dados de uma pessoa específica pelo ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"João Silva\",\n    \"birthDate\": \"1990-05-15\",\n    \"admissionDate\": \"2020-01-10\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						},
+						"description": "Cria uma nova pessoa no sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person with ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Maria Santos\",\n    \"birthDate\": \"1985-08-22\",\n    \"admissionDate\": \"2019-03-15\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						},
+						"description": "Cria uma nova pessoa com um ID específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Person (Full)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"João Silva Atualizado\",\n    \"birthDate\": \"1990-05-15\",\n    \"admissionDate\": \"2020-01-10\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						},
+						"description": "Atualiza todos os dados de uma pessoa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Person (Partial)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"João Silva Parcial\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						},
+						"description": "Atualiza parcialmente os dados de uma pessoa (apenas campos fornecidos)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						},
+						"description": "Remove uma pessoa do sistema"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gerenciamento básico de pessoas (CRUD)"
+		},
+		{
+			"name": "Age Service",
+			"item": [
+				{
+					"name": "Get Person Age (Years)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/age?output=years",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"age"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "years"
+								}
+							]
+						},
+						"description": "Calcula a idade da pessoa em anos"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person Age (Months)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/age?output=months",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"age"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "months"
+								}
+							]
+						},
+						"description": "Calcula a idade da pessoa em meses"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person Age (Days)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/age?output=days",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"age"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "days"
+								}
+							]
+						},
+						"description": "Calcula a idade da pessoa em dias"
+					},
+					"response": []
+				}
+			],
+			"description": "Serviços para cálculo de idade das pessoas"
+		},
+		{
+			"name": "Salary Service",
+			"item": [
+				{
+					"name": "Get Person Salary (Full)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/salary?output=full",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"salary"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "full"
+								}
+							]
+						},
+						"description": "Calcula o salário completo da pessoa baseado no tempo de admissão (valor em reais)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person Salary (Min)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/salary?output=min",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"salary"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "min"
+								}
+							]
+						},
+						"description": "Calcula o salário da pessoa em múltiplos do salário mínimo baseado no tempo de admissão"
+					},
+					"response": []
+				}
+			],
+			"description": "Serviços para cálculo de salário das pessoas"
+		},
+		{
+			"name": "Test Scenarios",
+			"item": [
+				{
+					"name": "Complete Workflow Test",
+					"item": [
+						{
+							"name": "1. Create Test Person",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test User\",\n    \"birthDate\": \"1995-03-20\",\n    \"admissionDate\": \"2021-06-01\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/people",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people"
+									]
+								},
+								"description": "Cria uma pessoa para teste"
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Created Person",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/{{personId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										"{{personId}}"
+									]
+								},
+								"description": "Busca a pessoa criada"
+							},
+							"response": []
+						},
+						{
+							"name": "3. Calculate Age",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/{{personId}}/age?output=years",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										"{{personId}}",
+										"age"
+									],
+									"query": [
+										{
+											"key": "output",
+											"value": "years"
+										}
+									]
+								},
+								"description": "Calcula a idade da pessoa"
+							},
+							"response": []
+						},
+						{
+							"name": "4. Calculate Salary",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/{{personId}}/salary?output=full",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										"{{personId}}",
+										"salary"
+									],
+									"query": [
+										{
+											"key": "output",
+											"value": "full"
+										}
+									]
+								},
+								"description": "Calcula o salário da pessoa"
+							},
+							"response": []
+						},
+						{
+							"name": "5. Update Person",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test User Updated\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/people/{{personId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										"{{personId}}"
+									]
+								},
+								"description": "Atualiza parcialmente a pessoa"
+							},
+							"response": []
+						},
+						{
+							"name": "6. Delete Test Person",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/{{personId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										"{{personId}}"
+									]
+								},
+								"description": "Remove a pessoa de teste"
+							},
+							"response": []
+						}
+					],
+					"description": "Fluxo completo de teste da API"
+				}
+			],
+			"description": "Cenários de teste para validar a funcionalidade completa"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "personId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
