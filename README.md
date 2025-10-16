@@ -2,14 +2,13 @@
 
 ## 📋 Resumo do Projeto
 
-Esta aplicação Spring Boot implementa uma API REST completa para gerenciamento de pessoas, desenvolvida conforme as especificações do desafio SCCON Geospatial. A implementação segue os princípios SOLID, utiliza ConcurrentHashMap para thread-safety e inclui validações robustas para evitar erros 500.
+Esta aplicação Spring Boot implementa uma API REST completa para gerenciamento de pessoas, desenvolvida conforme as especificações do desafio SCCON Geospatial. A implementação segue os princípios SOLID e inclui validações robustas para evitar erros 500.
 
 ### ✅ Pontos Implementados
 
 - **Documentação bem elaborada**: Todas as classes, métodos e endpoints possuem documentação JavaDoc detalhada
 - **Uso de SOLID**: Separação clara de responsabilidades com interfaces, serviços especializados e injeção de dependência
 - **Implementação correta dos cálculos**: Cálculos de idade e salário implementados conforme especificação exata
-- **ConcurrentHashMap**: Utilizado para implementação thread-safe do mapa de pessoas em memória
 - **Separação de camadas**: Arquitetura bem estruturada com controller, service, repository e DTOs
 - **Validações robustas**: Validação de entrada com mensagens detalhadas para evitar dados nulos
 - **Tratamento de erros**: Handler global com mensagens detalhadas e códigos HTTP apropriados
